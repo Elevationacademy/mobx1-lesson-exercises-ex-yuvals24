@@ -9,6 +9,10 @@ class Item extends Component {
   }
   editItem = () => {
     //your code here
+    let newLocation = prompt('Enter new location')
+    if (newLocation) {
+      this.props.store.editItem(newLocation)
+    }
   }
   deleteItem = () => {
     //your code here
@@ -19,6 +23,7 @@ class Item extends Component {
       <div className={item.completed ? "crossed" : null}>
         <input type="checkbox" value={item.name} onClick={this.checkItem} />
         {item.name}  {item.location}
+        <button className='editButton' onClick={this.editItem}>Edit</button> 
         {/*   your code here 
             each item should be in an input checkbox
             it should display the item name and location

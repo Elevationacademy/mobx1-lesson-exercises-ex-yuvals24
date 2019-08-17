@@ -14,8 +14,10 @@ export class ShoppingList {
         // your code here
         this.list.push(new Item(name))
     }
-    editItem = () => {
+    @action editItem = (itemName, newLocation) => {
         // your code here
+        let item = this.list.find(i => i.name === itemName)
+        item.location = newLocation
     }
     deleteItem = () => {
         // your code here

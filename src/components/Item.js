@@ -7,15 +7,16 @@ class Item extends Component {
     //your code here
     this.props.store.checkItem(e.target.value)
   }
-  editItem = () => {
+  editItem = (e) => {
     //your code here
     let newLocation = prompt('Enter new location')
     if (newLocation) {
-      this.props.store.editItem(newLocation)
+      this.props.store.editItem(e.target.value, newLocation)
     }
   }
-  deleteItem = () => {
+  deleteItem = (e) => {
     //your code here
+    this.props.store.deleteItem(e.target.value)
   }
   render() {
     let item = this.props.item
@@ -23,7 +24,8 @@ class Item extends Component {
       <div className={item.completed ? "crossed" : null}>
         <input type="checkbox" value={item.name} onClick={this.checkItem} />
         {item.name}  {item.location}
-        <button className='editButton' onClick={this.editItem}>Edit</button> 
+        <button className='editButton' value={item.name} onClick={this.editItem}>Edit Location</button>
+        <button value={item.name} onClick={this.deleteItem}>Delete Item</button>
         {/*   your code here 
             each item should be in an input checkbox
             it should display the item name and location

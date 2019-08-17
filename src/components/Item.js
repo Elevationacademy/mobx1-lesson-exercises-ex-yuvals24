@@ -15,7 +15,9 @@ class Item extends Component {
   render() {
     let item = this.props.item
     return (
-      <div> {item.name}
+      <div className={item.completed ? "crossed" : null}>
+        <input type="checkbox" value={item.name} />
+        {item.name}
         {/*   your code here
             each item should be in an input checkbox
             it should display the item name and location
